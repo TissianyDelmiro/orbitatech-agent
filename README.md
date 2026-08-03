@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 Agente IA ÓrbitaTech (Challenge ONE IA for Tech)
 
-## Getting Started
+O **Agente IA ÓrbitaTech** é um sistema de IA Corporativo baseado em **Retrieval-Augmented Generation (RAG)** desenvolvido para responder dúvidas de colaboradores com base na documentação interna oficial da empresa ÓrbitaTech (Recursos Humanos, Financeiro, Procedimentos Operacionais, Segurança de Dados e Planejamento Estratégico).
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🏗️ Arquitetura do Pipeline
+
+```mermaid
+flowchart TD
+    subgraph Offline ["Etapa Offline (Pré-computada)"]
+        A[Documentos em docs/] --> B[Módulos de Extração PDF, DOCX, XLSX, MD, PPTX]
+        B --> C[Limpeza e Chunking ~800 chars / 150 overlap]
+        C --> D[Cohere embed-multilingual-v3.0 API]
+        D --> E[data/index.json Base Vetorial Commitada]
+    end
+
+    subgraph Online ["Etapa Online (Runtime Serverless Vercel)"]
+        F[Usuário / Interface de Chat] -->|Pergunta + Categoria| G[API Route /api/chat]
+        G --> H[Cohere embed-multilingual-v3.0 para Pergunta]
+        H --> I[Similaridade de Cosseno em Memória sobre index.json]
+        I -->|Top ~20 Candidatos| J[Cohere rerank-multilingual-v3.0 Reranking]
+        J -->|Top ~5 Relevantes| K[Cohere command-r-plus Geração de Resposta]
+        K --> L[Resposta Fundamentada com Fontes Citadas]
+        L --> F
+    end
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tecnologias Utilizadas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** [Next.js](https://nextjs.org/) (App Router + TypeScript + Tailwind CSS)
+- **Modelos de IA (Cohere):**
+  - Embeddings: `embed-multilingual-v3.0`
+  - Reranking: `rerank-multilingual-v3.0`
+  - Geração (LLM): `command-r-plus`
+- **Extração de Documentos:** `adm-zip`, `xlsx`, `pdf-parse`
+- **Deploy:** Vercel (Serverless Edge Functions)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Instruções de Instalação e Execução Local
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clonar o Repositório:**
+   ```bash
+   git clone https://github.com/TissianyDelmiro/orbitatech-agent.git
+   cd orbitatech-agent
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Configurar Variáveis de Ambiente:**
+   Crie um arquivo `.env.local` na raiz baseado no `.env.example`:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Adicione sua chave da API Cohere em `.env.local`:
+   ```env
+   COHERE_API_KEY=sua_chave_cohere_aqui
+   ```
 
-## Deploy on Vercel
+3. **Instalar Dependências:**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Gerar ou Atualizar o Índice Vetorial (Offline):**
+   ```bash
+   npm run build-index
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Executar em Modo de Desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+   Acesse a aplicação em `http://localhost:3000`.
+
+---
+
+## ❓ Exemplos de Perguntas e Respostas
+
+1. **Recursos Humanos (RH):**
+   - *Pergunta:* "Como funciona o período de experiência e avaliação de desempenho?"
+   - *Fonte Consultada:* `01_manual_onboarding_rh.docx` (RH)
+
+2. **Financeiro:**
+   - *Pergunta:* "Qual o limite para reembolso de refeições em viagens corporativas?"
+   - *Fonte Consultada:* `02_orcamento_e_reembolso_financeiro.xlsx` (Financeiro)
+
+3. **Operacional:**
+   - *Pergunta:* "Qual é o procedimento em caso de incidente ou queda de servidor?"
+   - *Fonte Consultada:* `03_manual_procedimentos_operacionais.md` (Operacional)
+
+4. **Legal/Compliance:**
+   - *Pergunta:* "Quais são as regras para classificação de dados confidenciais e LGPD?"
+   - *Fonte Consultada:* `04_politica_seguranca_dados_corporativa.pdf` (Legal/Compliance)
+
+5. **Estratégico:**
+   - *Pergunta:* "Quais são os OKRs principais para o 3º Trimestre de 2026?"
+   - *Fonte Consultada:* `05_okrs_roadmap_estrategico.pptx` (Estratégico)
+
+---
+
+## 🎥 Demonstração
+
+[Vídeo de demonstração — inserir link ou embed aqui]
+
+![Print da interface do agente](public/window.svg)
+![Exemplo de resposta com fontes citadas](public/globe.svg)
+
+---
+
+## 🌐 Status do Deploy
+
+- **Plataforma:** Vercel
+- **URL Pública:** [https://orbitatech-agent.vercel.app](https://orbitatech-agent.vercel.app) *(Substituir após publicar na Vercel)*
+
+---
+
+## 📌 Limitações e Próximos Passos
+
+- Suporte a streaming de respostas via Server-Sent Events (SSE).
+- Cache local para perguntas frequentes.
+- Interface com histórico persistente no localStorage.
