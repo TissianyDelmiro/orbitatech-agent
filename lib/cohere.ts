@@ -145,5 +145,14 @@ REGRAS OBRIGATÓRIAS DE RESPOSTA:
   }
 
   const data = await response.json();
-  return data.message.content[0].text;
+  const rawAnswer = data.message.content[0].text;
+  
+  // Remove formatação markdown da resposta
+  let cleanAnswer = rawAnswer;
+  // Remove ** (negrito)
+  cleanAnswer = cleanAnswer.replace(/\*\*(.*?)\*\*/g, '$1');
+  // Remove ## (cabeçalhos)
+  cleanAnswer = cleanAnswer.replace(/^##\s+/gm, '');
+  
+  return cleanAnswer;
 }
