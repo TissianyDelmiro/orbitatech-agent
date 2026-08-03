@@ -118,7 +118,7 @@ REGRAS OBRIGATÓRIAS DE RESPOSTA:
 2. Se o contexto fornecido NÃO contiver a informação necessária para responder com certeza, diga educadamente: "Desculpe, não encontrei essa informação nos documentos internos da ÓrbitaTech."
 3. NUNCA invente informações, regras ou valores que não estejam nos documentos.
 4. Ao final da sua resposta, cite SEMPRE os documentos fontes utilizados no formato:
-   \n\n📌 **Fontes consultadas:**\n- [Nome do Arquivo] (Categoria)`;
+   \n\n📌 Fontes consultadas:\n- [Nome do Arquivo] (Categoria)`;
 
   const response = await fetch(`${COHERE_API_URL}/chat`, {
     method: "POST",

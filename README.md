@@ -102,10 +102,25 @@ flowchart TD
 
 ## 🎥 Demonstração
 
-[Vídeo de demonstração — inserir link ou embed aqui]
+### Interface do Chat
 
-![Print da interface do agente](public/window.svg)
-![Exemplo de resposta com fontes citadas](public/globe.svg)
+A interface do Agente ÓrbitaTech apresenta:
+
+- Design moderno e responsivo com tema escuro
+- Filtro de categorias para busca direcionada
+- Histórico de conversação em tempo real
+- Citação automática de fontes consultadas
+- Indicador de tempo de resposta
+
+### Exemplos de Uso
+
+O agente é capaz de responder perguntas sobre:
+
+- **Recursos Humanos (RH):** Onboarding, avaliação de desempenho, benefícios
+- **Financeiro:** Reembolsos, orçamentos, políticas de despesas
+- **Operacional:** Procedimentos, protocolos de incidentes, fluxos de trabalho
+- **Legal/Compliance:** Políticas de segurança, LGPD, classificação de dados
+- **Estratégico:** OKRs, roadmap, metas trimestrais
 
 ---
 

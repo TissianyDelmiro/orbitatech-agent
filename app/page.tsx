@@ -24,7 +24,7 @@ export default function Home() {
     {
       id: "welcome",
       sender: "bot",
-      text: "Olá! Sou o **Agente de IA ÓrbitaTech**. Estou aqui para tirar dúvidas sobre onboarding, reembolso financeiro, procedimentos operacionais, segurança de dados e planejaço estratégico da empresa. Como posso te ajudar hoje?",
+      text: "Olá! Sou o Agente de IA ÓrbitaTech. Estou aqui para tirar dúvidas sobre onboarding, reembolso financeiro, procedimentos operacionais, segurança de dados e planejamento estratégico da empresa. Como posso te ajudar hoje?",
     },
   ]);
   const [inputQuestion, setInputQuestion] = useState("");
