@@ -3,6 +3,9 @@
 O **Agente IA ÓrbitaTech** é um sistema de IA Corporativo baseado em **Retrieval-Augmented Generation (RAG)** desenvolvido para responder dúvidas de colaboradores com base na documentação interna oficial da empresa ÓrbitaTech (Recursos Humanos, Financeiro, Procedimentos Operacionais, Segurança de Dados e Planejamento Estratégico).
 
 🎥 Vídeo demo: https://youtu.be/cuWdcdObAk8
+
+<img width="1920" height="1295" alt="image" src="https://github.com/user-attachments/assets/f49101fc-2cb2-44b9-8b90-68a0979c2890" />
+
 ---
 
 ## 🏗️ Arquitetura do Pipeline
