@@ -92,25 +92,84 @@ O **Agente IA ÓrbitaTech** é um sistema de IA Corporativo baseado em **Retriev
 
 ## ❓ Exemplos de Perguntas e Respostas
 
-1. **Recursos Humanos (RH):**
-   - *Pergunta:* "Como funciona o período de experiência e avaliação de desempenho?"
-   - *Fonte Consultada:* `01_manual_onboarding_rh.docx` (RH)
+### 1. Recursos Humanos (RH)
+**Pergunta:** "Como funciona o período de experiência e avaliação de desempenho?"
+- *Fonte Esperada:* `01_manual_onboarding_rh.docx` (RH)
 
-2. **Financeiro:**
-   - *Pergunta:* "Qual o limite para reembolso de refeições em viagens corporativas?"
-   - *Fonte Consultada:* `02_orcamento_e_reembolso_financeiro.xlsx` (Financeiro)
+### 2. Financeiro
+**Pergunta:** "Qual o limite para reembolso de refeições em viagens corporativas?"
+- *Resposta Esperada:* R$ 90 por dia
+- *Fonte Esperada:* `02_orcamento_e_reembolso_financeiro.xlsx` (Financeiro)
 
-3. **Operacional:**
-   - *Pergunta:* "Qual é o procedimento em caso de incidente ou queda de servidor?"
-   - *Fonte Consultada:* `03_manual_procedimentos_operacionais.md` (Operacional)
+### 3. Operacional
+**Pergunta:** "Qual é o procedimento em caso de incidente ou queda de servidor?"
+- *Fonte Esperada:* `03_manual_procedimentos_operacionais.md` (Operacional)
 
-4. **Legal/Compliance:**
-   - *Pergunta:* "Quais são as regras para classificação de dados confidenciais e LGPD?"
-   - *Fonte Consultada:* `04_politica_seguranca_dados_corporativa.pdf` (Legal/Compliance)
+### 4. Legal/Compliance
+**Pergunta:** "Quais são as regras para classificação de dados confidenciais e LGPD?"
+- *Fonte Esperada:* `04_politica_seguranca_dados_corporativa.pdf` (Legal/Compliance)
 
-5. **Estratégico:**
-   - *Pergunta:* "Quais são os OKRs principais para o 3º Trimestre de 2026?"
-   - *Fonte Consultada:* `05_okrs_roadmap_estrategico.pptx` (Estratégico)
+### 5. Estratégico
+**Pergunta:** "Quais são os OKRs principais para o 3º Trimestre de 2026?"
+- *Fonte Esperada:* `05_okrs_roadmap_estrategico.pptx` (Estratégico)
+
+---
+
+## 🎬 Roteiro para Vídeo de Demonstração
+
+### Script Sugerido (5-7 minutos)
+
+**1. Introdução (30 segundos)**
+- "Olá! Este é o Agente IA ÓrbitaTech, um sistema RAG corporativo desenvolvido para o Challenge Alura/ONE IA for Tech."
+- Mostrar a interface inicial com a mensagem de boas-vindas
+
+**2. Demonstração de Uso (4 minutos)**
+
+**🔵 Pergunta 1 - Financeiro (fácil e direta):**
+```
+"Qual o limite para reembolso de refeições?"
+```
+- Mostrar a resposta rápida: R$ 90 por dia
+- Destacar a citação automática da fonte
+
+**🟢 Pergunta 2 - Estratégico (resposta mais elaborada):**
+```
+"Quais são os OKRs principais para o 3º Trimestre de 2026?"
+```
+- Mostrar a lista detalhada de objetivos
+- Destacar que o agente estrutura bem a informação
+
+**🟡 Pergunta 3 - Operacional (procedimento complexo):**
+```
+"Qual é o procedimento em caso de incidente de segurança?"
+```
+- Mostrar os passos numerados
+- Destacar a clareza e organização da resposta
+
+**🟣 Pergunta 4 - Usando o Filtro de Categoria:**
+```
+Selecionar categoria: "Legal/Compliance"
+"Quais são as regras para classificação de dados confidenciais?"
+```
+- Mostrar como o filtro ajuda a focar a busca
+- Destacar a resposta fundamentada nos documentos de compliance
+
+**🔴 Pergunta 5 - Teste de Honestidade (informação não existente):**
+```
+"Quantos dias de férias os colaboradores têm direito?"
+```
+- Mostrar que o agente responde honestamente: "Não encontrei essa informação"
+- Destacar que isso evita alucinações (informações inventadas)
+
+**3. Recursos Técnicos (1 minuto)**
+- Mostrar o tempo de resposta (geralmente 5-10 segundos)
+- Destacar a citação de fontes ao final de cada resposta
+- Mencionar que funciona com 5 formatos de arquivo diferentes
+
+**4. Conclusão (30 segundos)**
+- Resumir: "Sistema RAG completo com Next.js, Cohere e deploy na Vercel"
+- Mencionar: "Código open-source no GitHub"
+- CTA: "Acesse orbitatech-agent.vercel.app para testar"
 
 ---
 
@@ -141,7 +200,8 @@ O agente é capaz de responder perguntas sobre:
 ## 🌐 Status do Deploy
 
 - **Plataforma:** Vercel
-- **URL Pública:** [https://orbitatech-agent.vercel.app](https://orbitatech-agent.vercel.app) *(Substituir após publicar na Vercel)*
+- **URL Pública:** [https://orbitatech-agent.vercel.app](https://orbitatech-agent.vercel.app)
+- **Status:** ✅ Online e Funcionando
 
 ---
 
