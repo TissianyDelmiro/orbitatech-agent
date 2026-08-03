@@ -6,24 +6,38 @@ O **Agente IA ÓrbitaTech** é um sistema de IA Corporativo baseado em **Retriev
 
 ## 🏗️ Arquitetura do Pipeline
 
-```mermaid
-flowchart TD
-    subgraph Offline ["Etapa Offline (Pré-computada)"]
-        A[Documentos em docs/] --> B[Módulos de Extração PDF, DOCX, XLSX, MD, PPTX]
-        B --> C[Limpeza e Chunking ~800 chars / 150 overlap]
-        C --> D[Cohere embed-multilingual-v3.0 API]
-        D --> E[data/index.json Base Vetorial Commitada]
-    end
+### Etapa Offline (Pré-computada - roda uma vez localmente)
 
-    subgraph Online ["Etapa Online (Runtime Serverless Vercel)"]
-        F[Usuário / Interface de Chat] -->|Pergunta + Categoria| G[API Route /api/chat]
-        G --> H[Cohere embed-multilingual-v3.0 para Pergunta]
-        H --> I[Similaridade de Cosseno em Memória sobre index.json]
-        I -->|Top ~20 Candidatos| J[Cohere rerank-multilingual-v3.0 Reranking]
-        J -->|Top ~5 Relevantes| K[Cohere command-r-plus Geração de Resposta]
-        K --> L[Resposta Fundamentada com Fontes Citadas]
-        L --> F
-    end
+```
+📁 docs/ (5 arquivos: PDF, DOCX, XLSX, MD, PPTX)
+    ↓
+🔧 Extração de Texto (módulos específicos por formato)
+    ↓
+✂️ Limpeza e Chunking (~800 caracteres, 150 overlap)
+    ↓
+🤖 Cohere embed-multilingual-v3.0 (geração de embeddings)
+    ↓
+💾 data/index.json (base vetorial commitada no repositório)
+```
+
+### Etapa Online (Runtime - a cada requisição na Vercel)
+
+```
+👤 Usuário faz pergunta na Interface de Chat
+    ↓
+🌐 API Route /api/chat recebe pergunta + categoria (opcional)
+    ↓
+🤖 Cohere embed-multilingual-v3.0 (embedding da pergunta)
+    ↓
+🔍 Similaridade de Cosseno em memória (top ~20 candidatos)
+    ↓
+🎯 Cohere rerank-multilingual-v3.0 (reranking - top ~5)
+    ↓
+💬 Cohere command-r-plus-08-2024 (geração da resposta final)
+    ↓
+✅ Resposta fundamentada + Fontes citadas
+    ↓
+👤 Exibição na interface para o usuário
 ```
 
 ---
