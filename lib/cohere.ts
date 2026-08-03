@@ -97,7 +97,7 @@ export async function rerankDocuments(
 }
 
 /**
- * Gera a resposta final usando a API Chat da Cohere v2 (command-r-plus)
+ * Gera a resposta final usando a API Chat da Cohere v2 (command-r-plus-08-2024)
  */
 export async function generateAnswer(
   query: string,
@@ -127,7 +127,7 @@ REGRAS OBRIGATÓRIAS DE RESPOSTA:
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "command-r-plus",
+      model: "command-r-plus-08-2024",
       messages: [
         { role: "system", content: systemPrompt },
         {
